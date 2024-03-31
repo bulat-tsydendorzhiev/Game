@@ -1,2 +1,2 @@
-﻿var a = new Map("/home/sarapulov-vasilii/work/Game/Game/Game/map.txt");
+﻿var a = new Map("map.txt");
 a.DisplayMap();
