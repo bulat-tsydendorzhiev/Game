@@ -89,11 +89,6 @@ public class Player
     {
         (int newCoordinateByX, int newCoordinateByY) = GetNewCoordinates(direction);
 
-        if (!IsValidCoordinates(newCoordinateByX, newCoordinateByY))
-        {
-            return;
-        }
-
         if (!IsReachableCoordinates(newCoordinateByX, newCoordinateByY))
         {
             return;
@@ -103,9 +98,6 @@ public class Player
         CurrentCoordinates = (newCoordinateByX, newCoordinateByY);
         map.Update(CurrentCoordinates);
     }
-
-    private bool IsValidCoordinates(int coordinateByX, int coordinateByY) => coordinateByX >= 0 && coordinateByX < map.GameMap.GetLength(0)
-                                                                        && coordinateByY >= 0 && coordinateByY < map.GameMap.GetLength(1);
 
     private bool IsReachableCoordinates(int coordinateByX, int coordinateByY) => !"-|".Contains(map.GameMap[coordinateByX, coordinateByY]);
 
