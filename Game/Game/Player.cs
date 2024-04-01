@@ -1,51 +1,120 @@
 namespace Game;
 
-internal class Player
+/// <summary>
+/// Player on the map.
+/// </summary>
+public class Player
 {
-    public (int, int) CordsOfPlayer { get; private set; }
+    /// <summary>
+    /// Current player coordinates.
+    /// </summary>
+    public (int, int) CurrentCoordinates { get; private set; }
 
-    public void SetStartCords(int cordX, int cordY)
+    /// <summary>
+    /// Map where player moves.
+    /// </summary>
+    private Map map;
+
+    /// <summary>
+    /// Direction player move.
+    /// </summary>
+    public enum Direction
     {
-        CordsOfPlayer = (cordX, cordY);
+        /// <summary>
+        /// Left direction.
+        /// </summary>
+        Left,
+
+        /// <summary>
+        /// Right direction.
+        /// </summary>
+        Right,
+
+        /// <summary>
+        /// Up direction.
+        /// </summary>
+        Up,
+
+        /// <summary>
+        /// Down direction.
+        /// </summary>
+        Down,
     }
 
-    public void MoveUp(Map map)
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Player"/> class.
+    /// </summary>
+    /// <param name="coordinateByX">Coordinate by X.</param>
+    /// <param name="coordinateByY">Coordinate by Y.</param>
+    /// <param name="map">Game map.</param>
+    public Player(int coordinateByX, int coordinateByY, Map gameMap)
     {
-        if (map.GameMap[CordsOfPlayer.Item1, CordsOfPlayer.Item2 - 1] != '*')
+        CurrentCoordinates = (coordinateByX, coordinateByY);
+        map = gameMap;
+    }
+
+    /// <summary>
+    /// Makes player go on left direction.
+    /// </summary>
+    public void MoveLeft()
+    {
+        MakeMove(Direction.Left);
+    }
+
+    /// <summary>
+    /// Makes player go on right direction.
+    /// </summary>
+    public void MoveRight()
+    {
+        MakeMove(Direction.Right);
+    }
+
+    /// <summary>
+    /// Makes player go on up direction.
+    /// </summary>
+    public void MoveUp()
+    {
+        MakeMove(Direction.Up);
+    }
+
+    /// <summary>
+    /// Makes player go on down direction.
+    /// </summary>
+    public void MoveDown()
+    {
+        MakeMove(Direction.Down);
+    }
+
+    private void MakeMove(Direction direction)
+    {
+        (int newCoordinateByX, int newCoordinateByY) = GetNewCoordinates(direction);
+
+        if (!IsValidCoordinates(newCoordinateByX, newCoordinateByY))
         {
-            map.DelatePlayer(CordsOfPlayer);
-            CordsOfPlayer = (CordsOfPlayer.Item1, CordsOfPlayer.Item2 - 1);
-            map.Update(CordsOfPlayer);
+            return;
         }
+
+        if (!IsReachableCoordinates(newCoordinateByX, newCoordinateByY))
+        {
+            return;
+        }
+
+        map.Reset();
+        CurrentCoordinates = (newCoordinateByX, newCoordinateByY);
+        map.Update(CurrentCoordinates);
     }
 
-    public void MoveDown(Map map)
-    {
-        if (map.GameMap[CordsOfPlayer.Item1, CordsOfPlayer.Item2 + 1] != '*')
-        {
-            map.DelatePlayer(CordsOfPlayer);
-            CordsOfPlayer = (CordsOfPlayer.Item1, CordsOfPlayer.Item2 + 1);
-            map.Update(CordsOfPlayer);
-        }
-    }
+    private bool IsValidCoordinates(int coordinateByX, int coordinateByY) => coordinateByX >= 0 && coordinateByX < map.GameMap.GetLength(0)
+                                                                        && coordinateByY >= 0 && coordinateByY < map.GameMap.GetLength(1);
 
-    public void MoveLeft(Map map)
-    {
-        if (map.GameMap[CordsOfPlayer.Item1 - 1, CordsOfPlayer.Item2] != '*')
-        {
-            map.DelatePlayer(CordsOfPlayer);
-            CordsOfPlayer = (CordsOfPlayer.Item1 - 1, CordsOfPlayer.Item2);
-            map.Update(CordsOfPlayer);
-        }
-    }
+    private bool IsReachableCoordinates(int coordinateByX, int coordinateByY) => !"-|".Contains(map.GameMap[coordinateByX, coordinateByY]);
 
-    public void MoveRight(Map map)
+    private (int, int) GetNewCoordinates(Direction direction)
+    => direction switch
     {
-        if (map.GameMap[CordsOfPlayer.Item1 + 1, CordsOfPlayer.Item2] != '*')
-        {
-            map.DelatePlayer(CordsOfPlayer);
-            CordsOfPlayer = (CordsOfPlayer.Item1 + 1, CordsOfPlayer.Item2);
-            map.Update(CordsOfPlayer);
-        }
-    }
+        Direction.Left => (CurrentCoordinates.Item1 - 1, CurrentCoordinates.Item2),
+        Direction.Right => (CurrentCoordinates.Item1 + 1, CurrentCoordinates.Item2),
+        Direction.Up => (CurrentCoordinates.Item1, CurrentCoordinates.Item2 - 1),
+        Direction.Down => (CurrentCoordinates.Item1, CurrentCoordinates.Item2 + 1),
+    };
 }
