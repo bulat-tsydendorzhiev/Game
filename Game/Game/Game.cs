@@ -12,9 +12,10 @@ public class Game
     /// <param name="filePath">File path.</param>
     public Game(string filePath)
     {
+        Console.Clear();
         map = new Map(filePath);
-        player = new Player(map.InitialPlayerCoordinates.Item1, map.InitialPlayerCoordinates.Item2, map);
-        map.Update(map.InitialPlayerCoordinates);
+        player = new Player(map.InitialPlayerCoordinates, map);
+        map.Display();
     }
 
     public void MoveLeft(object sender, EventArgs args)

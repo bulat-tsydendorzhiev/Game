@@ -8,8 +8,11 @@ public class Map
     /// <summary>
     /// Сoordinates where the player is initially located.
     /// </summary>
-    public (int, int) InitialPlayerCoordinates { get; private set; }
+    public (int X, int Y) InitialPlayerCoordinates { get; private set; }
 
+    /// <summary>
+    /// Map where its objects located.
+    /// </summary>
     public char[,] GameMap { get; private set; }
 
     /// <summary>
@@ -39,37 +42,31 @@ public class Map
     }
 
     /// <summary>
-    /// Reset map.
+    /// Display map on console.
     /// </summary>
-    public void Reset()
+    public void Display()
     {
-        Console.SetCursorPosition(0, 0);
-
         for (int i = 0; i < GameMap.GetLength(1); ++i)
         {
             for (int j = 0; j < GameMap.GetLength(0); ++j)
             {
-                Console.WriteLine();
+                Console.Write((j, i) == InitialPlayerCoordinates ? '@' : GameMap[j, i]);
             }
+
+            Console.WriteLine();
         }
     }
 
     /// <summary>
     /// Update objects on map.
     /// </summary>
+    /// <param name="oldPlayerCoordinates">Old coordinates player locates.</param>
     /// <param name="newPlayerCoordinates">New coordinates player locates.</param>
-    public void Update((int, int) newPlayerCoordinates)
+    public void Update((int X, int Y) oldPlayerCoordinates, (int X, int Y) newPlayerCoordinates)
     {
-        Console.SetCursorPosition(0, 0);
-
-        for (int i = 0; i < GameMap.GetLength(1); ++i)
-        {
-            for (int j = 0; j < GameMap.GetLength(0); ++j)
-            {
-                Console.Write((j, i) == newPlayerCoordinates ? '@' : GameMap[j, i]);
-            }
-
-            Console.WriteLine();
-        }
+        Console.SetCursorPosition(oldPlayerCoordinates.X, oldPlayerCoordinates.Y);
+        Console.Write(' ');
+        Console.SetCursorPosition(newPlayerCoordinates.X, newPlayerCoordinates.Y);
+        Console.Write('@');
     }
 }

@@ -1,14 +1,14 @@
 namespace Game;
 
 /// <summary>
-/// Player on the map.
+/// Object player on the game map.
 /// </summary>
 public class Player
 {
     /// <summary>
     /// Current player coordinates.
     /// </summary>
-    public (int, int) CurrentCoordinates { get; private set; }
+    public (int X, int Y) CurrentCoordinates { get; private set; }
 
     /// <summary>
     /// Map where player moves.
@@ -44,12 +44,10 @@ public class Player
     /// <summary>
     /// Initializes a new instance of the <see cref="Player"/> class.
     /// </summary>
-    /// <param name="coordinateByX">Coordinate by X.</param>
-    /// <param name="coordinateByY">Coordinate by Y.</param>
     /// <param name="map">Game map.</param>
-    public Player(int coordinateByX, int coordinateByY, Map gameMap)
+    public Player((int, int) playerCoordinates, Map gameMap)
     {
-        CurrentCoordinates = (coordinateByX, coordinateByY);
+        CurrentCoordinates = playerCoordinates;
         map = gameMap;
     }
 
@@ -89,24 +87,31 @@ public class Player
     {
         (int newCoordinateByX, int newCoordinateByY) = GetNewCoordinates(direction);
 
+        if (!IsValidCoordinates(newCoordinateByX, newCoordinateByY))
+        {
+            return;
+        }
+
         if (!IsReachableCoordinates(newCoordinateByX, newCoordinateByY))
         {
             return;
         }
 
-        map.Reset();
+        map.Update(CurrentCoordinates, (newCoordinateByX, newCoordinateByY));
         CurrentCoordinates = (newCoordinateByX, newCoordinateByY);
-        map.Update(CurrentCoordinates);
     }
+
+    private bool IsValidCoordinates(int coordinateByX, int coordinateByY) => coordinateByX >= 0 && coordinateByX < map.GameMap.GetLength(0)
+                                                                            && coordinateByY >= 0 && coordinateByY < map.GameMap.GetLength(1);
 
     private bool IsReachableCoordinates(int coordinateByX, int coordinateByY) => !"-|".Contains(map.GameMap[coordinateByX, coordinateByY]);
 
     private (int, int) GetNewCoordinates(Direction direction)
     => direction switch
     {
-        Direction.Left => (CurrentCoordinates.Item1 - 1, CurrentCoordinates.Item2),
-        Direction.Right => (CurrentCoordinates.Item1 + 1, CurrentCoordinates.Item2),
-        Direction.Up => (CurrentCoordinates.Item1, CurrentCoordinates.Item2 - 1),
-        Direction.Down => (CurrentCoordinates.Item1, CurrentCoordinates.Item2 + 1),
+        Direction.Left => (CurrentCoordinates.X - 1, CurrentCoordinates.Y),
+        Direction.Right => (CurrentCoordinates.X + 1, CurrentCoordinates.Y),
+        Direction.Up => (CurrentCoordinates.X, CurrentCoordinates.Y - 1),
+        Direction.Down => (CurrentCoordinates.X, CurrentCoordinates.Y + 1),
     };
 }

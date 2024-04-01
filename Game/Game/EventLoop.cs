@@ -31,6 +31,7 @@ public class EventLoop
                     DownHandler(this, EventArgs.Empty);
                     break;
                 case ConsoleKey.Escape:
+                    Console.Clear();
                     return;
             }
         }
