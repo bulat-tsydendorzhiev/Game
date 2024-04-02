@@ -1,5 +1,3 @@
-using System.Reflection.Metadata;
-
 namespace Game;
 
 public class EventLoop

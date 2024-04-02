@@ -15,7 +15,7 @@ public class Game
         Console.Clear();
         Console.CursorVisible = false;
         map = new Map(filePath);
-        player = new Player(map.InitialPlayerCoordinates, map);
+        player = new Player(map);
         map.Display();
     }
 

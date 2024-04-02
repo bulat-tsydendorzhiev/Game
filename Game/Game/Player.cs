@@ -45,9 +45,9 @@ public class Player
     /// Initializes a new instance of the <see cref="Player"/> class.
     /// </summary>
     /// <param name="map">Game map.</param>
-    public Player((int, int) playerCoordinates, Map gameMap)
+    public Player(Map gameMap)
     {
-        CurrentCoordinates = playerCoordinates;
+        CurrentCoordinates = gameMap.InitialPlayerCoordinates;
         map = gameMap;
     }
 

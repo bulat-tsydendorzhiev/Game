@@ -13,7 +13,7 @@ if (args[0] == "-help")
                     To start game enter path with map in txt format.
                     How to move: Use arrows on tour keyboard, their direction will
                     make player to move on the same direction.
-                    If you want to leave: press escape button to left the game
+                    If you want to leave: press escape button to left the game.
                     """;
     Console.WriteLine(message);
     return;
