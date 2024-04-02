@@ -13,6 +13,7 @@ public class Game
     public Game(string filePath)
     {
         Console.Clear();
+        Console.CursorVisible = false;
         map = new Map(filePath);
         player = new Player(map.InitialPlayerCoordinates, map);
         map.Display();
