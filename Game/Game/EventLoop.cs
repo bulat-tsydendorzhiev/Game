@@ -14,7 +14,7 @@ public class EventLoop
     {
         while (true)
         {
-            var key = Console.ReadKey();
+            var key = Console.ReadKey(true);
 
             switch (key.Key)
             {
@@ -32,6 +32,7 @@ public class EventLoop
                     break;
                 case ConsoleKey.Escape:
                     Console.Clear();
+                    Console.CursorVisible = true;
                     return;
             }
         }
