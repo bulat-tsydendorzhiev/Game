@@ -52,53 +52,27 @@ public class Player
     }
 
     /// <summary>
-    /// Makes player go on left direction.
+    /// A method that implements the player's movement on the map.
     /// </summary>
-    public void MoveLeft()
-    {
-        MakeMove(Direction.Left);
-    }
-
-    /// <summary>
-    /// Makes player go on right direction.
-    /// </summary>
-    public void MoveRight()
-    {
-        MakeMove(Direction.Right);
-    }
-
-    /// <summary>
-    /// Makes player go on up direction.
-    /// </summary>
-    public void MoveUp()
-    {
-        MakeMove(Direction.Up);
-    }
-
-    /// <summary>
-    /// Makes player go on down direction.
-    /// </summary>
-    public void MoveDown()
-    {
-        MakeMove(Direction.Down);
-    }
-
-    private void MakeMove(Direction direction)
+    /// <param name="direction">Direction of movement.</param>
+    /// <returns>The coordinates of the player before the move.</returns>
+    public (int oldCoordinateByX, int oldCoordinateByY) MakeMove(Direction direction)
     {
         (int newCoordinateByX, int newCoordinateByY) = GetNewCoordinates(direction);
 
         if (!IsValidCoordinates(newCoordinateByX, newCoordinateByY))
         {
-            return;
+            return (CurrentCoordinates.X, CurrentCoordinates.Y);
         }
 
         if (!IsReachableCoordinates(newCoordinateByX, newCoordinateByY))
         {
-            return;
+            return (CurrentCoordinates.X, CurrentCoordinates.Y);
         }
 
-        map.Update(CurrentCoordinates, (newCoordinateByX, newCoordinateByY));
+        var oldCoordinates = CurrentCoordinates;
         CurrentCoordinates = (newCoordinateByX, newCoordinateByY);
+        return oldCoordinates;
     }
 
     private bool IsValidCoordinates(int coordinateByX, int coordinateByY) => coordinateByX >= 0 && coordinateByX < map.GameMap.GetLength(0)

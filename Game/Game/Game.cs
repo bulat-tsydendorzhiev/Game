@@ -21,21 +21,21 @@ public class Game
 
     public void MoveLeft(object sender, EventArgs args)
     {
-        player.MoveLeft();
+        map.Update(player.MakeMove(Player.Direction.Left), player.CurrentCoordinates);
     }
 
     public void MoveRight(object sender, EventArgs args)
     {
-        player.MoveRight();
+        map.Update(player.MakeMove(Player.Direction.Right), player.CurrentCoordinates);
     }
 
     public void MoveUp(object sender, EventArgs args)
     {
-        player.MoveUp();
+        map.Update(player.MakeMove(Player.Direction.Up), player.CurrentCoordinates);
     }
 
     public void MoveDown(object sender, EventArgs args)
     {
-        player.MoveDown();
+        map.Update(player.MakeMove(Player.Direction.Down), player.CurrentCoordinates);
     }
 }
