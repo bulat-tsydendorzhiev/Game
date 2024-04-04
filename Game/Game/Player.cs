@@ -75,11 +75,28 @@ public class Player
         return oldCoordinates;
     }
 
+    /// <summary>
+    /// Checking that the player can exist in the given coordinates.
+    /// </summary>
+    /// <param name="coordinateByX">x coordinate.</param>
+    /// <param name="coordinateByY">y coordinate.</param>
+    /// <returns>True if possible, otherwise a false.</returns>
     private bool IsValidCoordinates(int coordinateByX, int coordinateByY) => coordinateByX >= 0 && coordinateByX < map.GameMap.GetLength(0)
                                                                             && coordinateByY >= 0 && coordinateByY < map.GameMap.GetLength(1);
 
+    /// <summary>
+    /// Checks that there are no walls in the direction of movement.
+    /// </summary>
+    /// <param name="coordinateByX">x coordinate.</param>
+    /// <param name="coordinateByY">y coordinate.</param>
+    /// <returns>False if there is, otherwise true.</returns>
     private bool IsReachableCoordinates(int coordinateByX, int coordinateByY) => !"-|".Contains(map.GameMap[coordinateByX, coordinateByY]);
 
+    /// <summary>
+    /// Changing the coordinates of the player's position.
+    /// </summary>
+    /// <param name="direction">Direction of movement.</param>
+    /// <returns>Coordinates of the new position player.</returns>
     private (int, int) GetNewCoordinates(Direction direction)
     => direction switch
     {

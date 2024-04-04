@@ -2,14 +2,29 @@ namespace Game;
 
 public class EventLoop
 {
+    /// <summary>
+    /// Checks that the player has moved left.
+    /// </summary>
     public event EventHandler<EventArgs> LeftHandler = (sender, args) => {};
 
+    /// <summary>
+    /// Checks that the player has moved right.
+    /// </summary>
     public event EventHandler<EventArgs> RightHandler = (sender, args) => {};
 
+    /// <summary>
+    /// Checks that the player has moved up.
+    /// </summary>
     public event EventHandler<EventArgs> UpHandler = (sender, args) => {};
 
+    /// <summary>
+    /// Checks that the player has moved down.
+    /// </summary>
     public event EventHandler<EventArgs> DownHandler = (sender, args) => {};
 
+    /// <summary>
+    /// Reading user actions.
+    /// </summary>
     public void Run()
     {
         while (true)
