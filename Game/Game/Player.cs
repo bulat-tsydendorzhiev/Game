@@ -76,27 +76,27 @@ public class Player
     }
 
     /// <summary>
-    /// Checking that the player can exist in the given coordinates.
+    /// Checks that the player can exist in the given coordinates.
     /// </summary>
-    /// <param name="coordinateByX">x coordinate.</param>
-    /// <param name="coordinateByY">y coordinate.</param>
-    /// <returns>True if possible, otherwise a false.</returns>
+    /// <param name="coordinateByX">Player's x-axis coordinate.</param>
+    /// <param name="coordinateByY">Player's y-axis coordinate.</param>
+    /// <returns>true if it's possible, otherwise a false.</returns>
     private bool IsValidCoordinates(int coordinateByX, int coordinateByY) => coordinateByX >= 0 && coordinateByX < map.GameMap.GetLength(0)
                                                                             && coordinateByY >= 0 && coordinateByY < map.GameMap.GetLength(1);
 
     /// <summary>
     /// Checks that there are no walls in the direction of movement.
     /// </summary>
-    /// <param name="coordinateByX">x coordinate.</param>
-    /// <param name="coordinateByY">y coordinate.</param>
-    /// <returns>False if there is, otherwise true.</returns>
+    /// <param name="coordinateByX">Player's x-axis coordinate.</param>
+    /// <param name="coordinateByY">Player's y-axis coordinate.</param>
+    /// <returns>false if there is, otherwise true.</returns>
     private bool IsReachableCoordinates(int coordinateByX, int coordinateByY) => !"-|".Contains(map.GameMap[coordinateByX, coordinateByY]);
 
     /// <summary>
-    /// Changing the coordinates of the player's position.
+    /// Returns the new coordinates of the player, takes into account the direction of his movement.
     /// </summary>
     /// <param name="direction">Direction of movement.</param>
-    /// <returns>Coordinates of the new position player.</returns>
+    /// <returns>Gets coordinates of the new position player.</returns>
     private (int, int) GetNewCoordinates(Direction direction)
     => direction switch
     {

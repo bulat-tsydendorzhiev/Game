@@ -42,7 +42,7 @@ public class Map
     }
 
     /// <summary>
-    /// Display map on console.
+    /// Displays the map in the console.
     /// </summary>
     public void Display()
     {
@@ -58,7 +58,7 @@ public class Map
     }
 
     /// <summary>
-    /// Update objects on map.
+    /// Updates objects on the map.
     /// </summary>
     /// <param name="oldPlayerCoordinates">Old coordinates player locates.</param>
     /// <param name="newPlayerCoordinates">New coordinates player locates.</param>

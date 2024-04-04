@@ -1,5 +1,8 @@
 namespace Game;
 
+/// <summary>
+/// Initializes game and change the player's position on the map.
+/// </summary>
 public class Game
 {
     private Map map;
@@ -22,8 +25,8 @@ public class Game
     /// <summary>
     /// Change the player's position on the map to the left.
     /// </summary>
-    /// <param name="sender">Sender.</param>
-    /// <param name="args">Argument.</param>
+    /// <param name="sender">Event, player moves to the left.</param>
+    /// <param name="args">Data this event.</param>
     public void MoveLeft(object sender, EventArgs args)
     {
         map.Update(player.MakeMove(Player.Direction.Left), player.CurrentCoordinates);
@@ -32,8 +35,8 @@ public class Game
     /// <summary>
     /// Change the player's position on the map to the right.
     /// </summary>
-    /// <param name="sender">Sender.</param>
-    /// <param name="args">Argument.</param>
+    /// <param name="sender">Event, player moves to the right.</param>
+    /// <param name="args">Data this event.</param>
     public void MoveRight(object sender, EventArgs args)
     {
         map.Update(player.MakeMove(Player.Direction.Right), player.CurrentCoordinates);
@@ -42,8 +45,8 @@ public class Game
     /// <summary>
     /// Change the player's position on the map to the up.
     /// </summary>
-    /// <param name="sender">Sender.</param>
-    /// <param name="args">Argument.</param>
+    /// <param name="sender">Event, player moves to the up.</param>
+    /// <param name="args">Data this event.</param>
     public void MoveUp(object sender, EventArgs args)
     {
         map.Update(player.MakeMove(Player.Direction.Up), player.CurrentCoordinates);
@@ -52,8 +55,8 @@ public class Game
      /// <summary>
     /// Change the player's position on the map to the down.
     /// </summary>
-    /// <param name="sender">Sender.</param>
-    /// <param name="args">Argument.</param>
+    /// <param name="sender">Event, player moves to the down.</param>
+    /// <param name="args">Data this event.</param>
     public void MoveDown(object sender, EventArgs args)
     {
         map.Update(player.MakeMove(Player.Direction.Down), player.CurrentCoordinates);

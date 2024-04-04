@@ -1,5 +1,8 @@
 namespace Game;
 
+/// <summary>
+/// Checks that the player has moved.
+/// </summary>
 public class EventLoop
 {
     /// <summary>
@@ -23,7 +26,7 @@ public class EventLoop
     public event EventHandler<EventArgs> DownHandler = (sender, args) => {};
 
     /// <summary>
-    /// Reading user actions.
+    /// Reads user actions.
     /// </summary>
     public void Run()
     {
