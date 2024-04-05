@@ -1,7 +1,7 @@
 namespace Game;
 
 /// <summary>
-/// Class to work with objects of game map.
+/// Class <c>Map</c> to work with objects of game map.
 /// </summary>
 public class Map
 {
@@ -42,7 +42,7 @@ public class Map
     }
 
     /// <summary>
-    /// Displays the map in the console.
+    /// Method <c>Display</c> displays the map in the console.
     /// </summary>
     public void Display()
     {
@@ -58,7 +58,7 @@ public class Map
     }
 
     /// <summary>
-    /// Updates objects on the map.
+    /// Method <c>Update</c> updates objects on the map.
     /// </summary>
     /// <param name="oldPlayerCoordinates">Old coordinates player locates.</param>
     /// <param name="newPlayerCoordinates">New coordinates player locates.</param>

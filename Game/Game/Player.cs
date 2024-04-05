@@ -1,7 +1,7 @@
 namespace Game;
 
 /// <summary>
-/// Object player on the game map.
+/// Class <c>Player</c> works with object player on the game map.
 /// </summary>
 public class Player
 {
@@ -52,7 +52,7 @@ public class Player
     }
 
     /// <summary>
-    /// A method that implements the player's movement on the map.
+    /// Method <c>MakeMove</c> implements the player's movement on the map.
     /// </summary>
     /// <param name="direction">Direction of movement.</param>
     /// <returns>The coordinates of the player before the move.</returns>
@@ -76,7 +76,7 @@ public class Player
     }
 
     /// <summary>
-    /// Checks that the player can exist in the given coordinates.
+    /// Method <c>IsValidCoordinates</c> checks that the player can exist in the given coordinates.
     /// </summary>
     /// <param name="coordinateByX">Player's x-axis coordinate.</param>
     /// <param name="coordinateByY">Player's y-axis coordinate.</param>
@@ -85,7 +85,7 @@ public class Player
                                                                             && coordinateByY >= 0 && coordinateByY < map.GameMap.GetLength(1);
 
     /// <summary>
-    /// Checks that there are no walls in the direction of movement.
+    /// Method <c>IsReachableCoordinates</c> checks that there are no walls in the direction of movement.
     /// </summary>
     /// <param name="coordinateByX">Player's x-axis coordinate.</param>
     /// <param name="coordinateByY">Player's y-axis coordinate.</param>
@@ -93,7 +93,7 @@ public class Player
     private bool IsReachableCoordinates(int coordinateByX, int coordinateByY) => !"-|".Contains(map.GameMap[coordinateByX, coordinateByY]);
 
     /// <summary>
-    /// Returns the new coordinates of the player, takes into account the direction of his movement.
+    /// Method <c>GetNewCoordinates</c> returns the new coordinates of the player, takes into account the direction of his movement.
     /// </summary>
     /// <param name="direction">Direction of movement.</param>
     /// <returns>Gets coordinates of the new position player.</returns>

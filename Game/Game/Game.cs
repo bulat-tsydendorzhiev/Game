@@ -1,7 +1,7 @@
 namespace Game;
 
 /// <summary>
-/// Initializes game and change the player's position on the map.
+/// Class <c>Game</c> initializes game and change the player's position on the map.
 /// </summary>
 public class Game
 {
@@ -23,7 +23,7 @@ public class Game
     }
 
     /// <summary>
-    /// Change the player's position on the map to the left.
+    /// Method <c>MoveLeft</c> change the player's position on the map to the left.
     /// </summary>
     /// <param name="sender">Event, player moves to the left.</param>
     /// <param name="args">Data this event.</param>
@@ -33,7 +33,7 @@ public class Game
     }
 
     /// <summary>
-    /// Change the player's position on the map to the right.
+    /// Method <c>MoveRight</c> change the player's position on the map to the right.
     /// </summary>
     /// <param name="sender">Event, player moves to the right.</param>
     /// <param name="args">Data this event.</param>
@@ -43,7 +43,7 @@ public class Game
     }
 
     /// <summary>
-    /// Change the player's position on the map to the up.
+    /// Method <c>MoveUp</c> change the player's position on the map to the up.
     /// </summary>
     /// <param name="sender">Event, player moves to the up.</param>
     /// <param name="args">Data this event.</param>
@@ -52,8 +52,8 @@ public class Game
         map.Update(player.MakeMove(Player.Direction.Up), player.CurrentCoordinates);
     }
 
-     /// <summary>
-    /// Change the player's position on the map to the down.
+    /// <summary>
+    /// Method <c>MoveDown</c> change the player's position on the map to the down.
     /// </summary>
     /// <param name="sender">Event, player moves to the down.</param>
     /// <param name="args">Data this event.</param>

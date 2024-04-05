@@ -1,7 +1,7 @@
 namespace Game;
 
 /// <summary>
-/// Checks that the player has moved.
+/// Class <c>EvenLoop</c> checks that the player has moved.
 /// </summary>
 public class EventLoop
 {
@@ -26,7 +26,7 @@ public class EventLoop
     public event EventHandler<EventArgs> DownHandler = (sender, args) => {};
 
     /// <summary>
-    /// Reads user actions.
+    /// Method <c>Run</c> reads user actions.
     /// </summary>
     public void Run()
     {
