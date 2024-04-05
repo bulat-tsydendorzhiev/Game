@@ -2,7 +2,7 @@
 
 if (args.Length != 1)
 {
-    Console.WriteLine("Invalid input parameters. Enter -h to learn more information.");
+    Console.WriteLine("Invalid input parameters. Enter -help to learn more information.");
     return;
 }
 
