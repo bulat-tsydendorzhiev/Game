@@ -19,14 +19,13 @@ public class Map
     public char[,] GameMap { get; private set; }
     private Rectangle[,] GameMapRectangles;
 
-    private int size = 50;
-    private Graphics graphics;
+    private int size;
     private Pen pen = new Pen(Color.Black, 2);
     /// <summary>
     /// Initializes a new instance of the <see cref="Map"/> class.
     /// </summary>
     /// <param name="filePath">File path.</param>
-    public Map(string filePath)
+    public Map(string filePath, Panel drowPanel)
     {
         var map = File.ReadAllLines(filePath);
         GameMap = new char[map[0].Length, map.Length];
@@ -46,34 +45,42 @@ public class Map
                 }
             }
         }
+        size = Math.Min(drowPanel.Width, drowPanel.Height) / Math.Max(GameMap.GetLength(0), GameMap.GetLength(1));
     }
 
     /// <summary>
     /// Method <c>Display</c> displays the map in the console.
     /// </summary>
-    public void Display(PaintEventArgs e)
+    public void Display(Graphics g, Panel drowPanel)
     {
-        //graphics = 
+        if ((drowPanel.Width - drowPanel.Height) < (GameMap.GetLength(0) - GameMap.GetLength(1)) * size)
+        {
+            size = drowPanel.Width / GameMap.GetLength(0);
+        }
+        else 
+        {
+            size = drowPanel.Height / GameMap.GetLength(1);
+        }
+        g.Clear(Color.White);
         for (int i = 0; i < GameMap.GetLength(1); ++i)
         {
             for (int j = 0; j < GameMap.GetLength(0); ++j)
             {
-                
                 var rect = new Rectangle(j * size, i * size, size, size);
                 GameMapRectangles[j, i] = rect;
                 if (CurrentPlayerCoordinates.X == j && CurrentPlayerCoordinates.Y == i)
                 {
-                    e.Graphics.FillRectangle(Brushes.Green, rect);
-                    e.Graphics.DrawRectangle(pen, rect);
+                    g.FillRectangle(Brushes.Green, rect);
+                    g.DrawRectangle(pen, rect);
                 }
                 else if (GameMap[j, i] == ' ')
                 {
-                    e.Graphics.DrawRectangle(pen, rect);
+                    g.DrawRectangle(pen, rect);
                 }
                 else
                 {
-                    e.Graphics.FillRectangle(Brushes.Blue, rect);
-                    e.Graphics.DrawRectangle(pen, rect);
+                    g.FillRectangle(Brushes.Blue, rect);
+                    g.DrawRectangle(pen, rect);
                 }
             }
         }

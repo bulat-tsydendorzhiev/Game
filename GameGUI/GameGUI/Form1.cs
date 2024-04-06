@@ -12,17 +12,17 @@ public partial class Form1 : Form
 
     private void Form1_Load(object sender, EventArgs e)
     {
-        map = new Map("C:\\Users\\sarap\\Desktop\\Game\\GameGUI\\GameGUI\\map.txt");
+        map = new Map("C:\\Users\\sarap\\Desktop\\Game\\GameGUI\\GameGUI\\map.txt", DrowPanel);
         player = new Player(map);
-        g = DrowPanel.CreateGraphics();
 
     }
 
     private void ControlPaint(object sender, PaintEventArgs e)
     {
-        map.Display(e);
+        g = DrowPanel.CreateGraphics();
+        map.Display(g, DrowPanel);
     }
-    
+
     private void MoveUp(object sender, EventArgs e)
     {
         player.MakeMove(Player.Direction.Up);

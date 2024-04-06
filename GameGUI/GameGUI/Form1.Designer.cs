@@ -42,17 +42,16 @@
             // LayoutDrowAndButtons
             // 
             LayoutDrowAndButtons.ColumnCount = 2;
-            LayoutDrowAndButtons.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 66.13995F));
-            LayoutDrowAndButtons.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.8600464F));
+            LayoutDrowAndButtons.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 66.66F));
+            LayoutDrowAndButtons.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.34F));
             LayoutDrowAndButtons.Controls.Add(LayoutButtons, 1, 0);
             LayoutDrowAndButtons.Controls.Add(DrowPanel, 0, 0);
             LayoutDrowAndButtons.Dock = DockStyle.Fill;
             LayoutDrowAndButtons.Location = new Point(0, 0);
             LayoutDrowAndButtons.Name = "LayoutDrowAndButtons";
             LayoutDrowAndButtons.RowCount = 1;
-            LayoutDrowAndButtons.RowStyles.Add(new RowStyle(SizeType.Percent, 52.6666679F));
-            LayoutDrowAndButtons.RowStyles.Add(new RowStyle(SizeType.Percent, 47.3333321F));
-            LayoutDrowAndButtons.Size = new Size(1329, 702);
+            LayoutDrowAndButtons.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            LayoutDrowAndButtons.Size = new Size(999, 680);
             LayoutDrowAndButtons.TabIndex = 2;
             // 
             // LayoutButtons
@@ -65,14 +64,14 @@
             LayoutButtons.Controls.Add(ButtonMoveRight, 1, 1);
             LayoutButtons.Controls.Add(ButtonMoveDown, 0, 2);
             LayoutButtons.Dock = DockStyle.Fill;
-            LayoutButtons.Location = new Point(882, 3);
+            LayoutButtons.Location = new Point(668, 3);
             LayoutButtons.Name = "LayoutButtons";
             LayoutButtons.RowCount = 3;
             LayoutButtons.RowStyles.Add(new RowStyle(SizeType.Percent, 33.33F));
             LayoutButtons.RowStyles.Add(new RowStyle(SizeType.Percent, 33.33F));
             LayoutButtons.RowStyles.Add(new RowStyle(SizeType.Percent, 33.34F));
             LayoutButtons.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            LayoutButtons.Size = new Size(444, 696);
+            LayoutButtons.Size = new Size(328, 674);
             LayoutButtons.TabIndex = 2;
             // 
             // ButtonMoveUp
@@ -82,7 +81,7 @@
             ButtonMoveUp.Font = new Font("Segoe UI", 36F, FontStyle.Regular, GraphicsUnit.Point, 204);
             ButtonMoveUp.Location = new Point(3, 3);
             ButtonMoveUp.Name = "ButtonMoveUp";
-            ButtonMoveUp.Size = new Size(438, 225);
+            ButtonMoveUp.Size = new Size(322, 218);
             ButtonMoveUp.TabIndex = 0;
             ButtonMoveUp.Text = "↑";
             ButtonMoveUp.UseVisualStyleBackColor = true;
@@ -92,9 +91,9 @@
             // 
             ButtonMoveLeft.Dock = DockStyle.Fill;
             ButtonMoveLeft.Font = new Font("Segoe UI", 36F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            ButtonMoveLeft.Location = new Point(3, 234);
+            ButtonMoveLeft.Location = new Point(3, 227);
             ButtonMoveLeft.Name = "ButtonMoveLeft";
-            ButtonMoveLeft.Size = new Size(216, 225);
+            ButtonMoveLeft.Size = new Size(158, 218);
             ButtonMoveLeft.TabIndex = 1;
             ButtonMoveLeft.Text = "←";
             ButtonMoveLeft.UseVisualStyleBackColor = true;
@@ -104,9 +103,9 @@
             // 
             ButtonMoveRight.Dock = DockStyle.Fill;
             ButtonMoveRight.Font = new Font("Segoe UI", 36F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            ButtonMoveRight.Location = new Point(225, 234);
+            ButtonMoveRight.Location = new Point(167, 227);
             ButtonMoveRight.Name = "ButtonMoveRight";
-            ButtonMoveRight.Size = new Size(216, 225);
+            ButtonMoveRight.Size = new Size(158, 218);
             ButtonMoveRight.TabIndex = 2;
             ButtonMoveRight.Text = "→";
             ButtonMoveRight.UseVisualStyleBackColor = true;
@@ -117,9 +116,9 @@
             LayoutButtons.SetColumnSpan(ButtonMoveDown, 2);
             ButtonMoveDown.Dock = DockStyle.Fill;
             ButtonMoveDown.Font = new Font("Segoe UI", 36F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            ButtonMoveDown.Location = new Point(3, 465);
+            ButtonMoveDown.Location = new Point(3, 451);
             ButtonMoveDown.Name = "ButtonMoveDown";
-            ButtonMoveDown.Size = new Size(438, 228);
+            ButtonMoveDown.Size = new Size(322, 220);
             ButtonMoveDown.TabIndex = 3;
             ButtonMoveDown.Text = "↓";
             ButtonMoveDown.UseVisualStyleBackColor = true;
@@ -127,10 +126,12 @@
             // 
             // DrowPanel
             // 
+            DrowPanel.AllowDrop = true;
+            DrowPanel.BackgroundImageLayout = ImageLayout.Center;
             DrowPanel.Dock = DockStyle.Fill;
             DrowPanel.Location = new Point(3, 3);
             DrowPanel.Name = "DrowPanel";
-            DrowPanel.Size = new Size(873, 696);
+            DrowPanel.Size = new Size(659, 674);
             DrowPanel.TabIndex = 3;
             DrowPanel.Paint += ControlPaint;
             // 
@@ -138,7 +139,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1329, 702);
+            ClientSize = new Size(999, 680);
             Controls.Add(LayoutDrowAndButtons);
             Name = "Form1";
             Text = "Game";
