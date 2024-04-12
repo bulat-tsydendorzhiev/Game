@@ -165,7 +165,7 @@ partial class Form1
         label1.Font = new Font("Segoe UI", 20F);
         label1.Location = new Point(0, 0);
         label1.Name = "label1";
-        label1.Size = new Size(64, 37);
+      label1.Size = new Size(64, 37);
         label1.TabIndex = 0;
         label1.Text = "HP: ";
         // 
@@ -179,6 +179,7 @@ partial class Form1
         Name = "Form1";
         Text = "Game";
         Load += Form1_Load;
+        KeyDown += Form1_KeyDown;
         LayoutDrowAndButtons.ResumeLayout(false);
         LayoutButtons.ResumeLayout(false);
         DrowPanel.ResumeLayout(false);
