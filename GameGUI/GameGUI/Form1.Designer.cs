@@ -83,6 +83,7 @@
             ButtonMoveUp.Name = "ButtonMoveUp";
             ButtonMoveUp.Size = new Size(322, 218);
             ButtonMoveUp.TabIndex = 0;
+            ButtonMoveUp.TabStop = false;
             ButtonMoveUp.Text = "↑";
             ButtonMoveUp.UseVisualStyleBackColor = true;
             ButtonMoveUp.Click += MoveUp;
@@ -95,6 +96,7 @@
             ButtonMoveLeft.Name = "ButtonMoveLeft";
             ButtonMoveLeft.Size = new Size(158, 218);
             ButtonMoveLeft.TabIndex = 1;
+            ButtonMoveLeft.TabStop = false;
             ButtonMoveLeft.Text = "←";
             ButtonMoveLeft.UseVisualStyleBackColor = true;
             ButtonMoveLeft.Click += MoveLeft;
@@ -107,6 +109,7 @@
             ButtonMoveRight.Name = "ButtonMoveRight";
             ButtonMoveRight.Size = new Size(158, 218);
             ButtonMoveRight.TabIndex = 2;
+            ButtonMoveRight.TabStop = false;
             ButtonMoveRight.Text = "→";
             ButtonMoveRight.UseVisualStyleBackColor = true;
             ButtonMoveRight.Click += MoveRight;
@@ -120,6 +123,7 @@
             ButtonMoveDown.Name = "ButtonMoveDown";
             ButtonMoveDown.Size = new Size(322, 220);
             ButtonMoveDown.TabIndex = 3;
+            ButtonMoveDown.TabStop = false;
             ButtonMoveDown.Text = "↓";
             ButtonMoveDown.UseVisualStyleBackColor = true;
             ButtonMoveDown.Click += MoveDown;
@@ -141,9 +145,11 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(999, 680);
             Controls.Add(LayoutDrowAndButtons);
+            MinimumSize = new Size(500, 500);
             Name = "Form1";
             Text = "Game";
             Load += Form1_Load;
+            KeyDown += Form1_KeyDown;
             LayoutDrowAndButtons.ResumeLayout(false);
             LayoutButtons.ResumeLayout(false);
             ResumeLayout(false);
