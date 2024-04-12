@@ -46,4 +46,30 @@ public partial class Form1 : Form
         player.MakeMove(Player.Direction.Left);
         map.Update(player.CurrentCoordinates, g);
     }
+
+    private void Form1_KeyDown(object sender, KeyEventArgs e)
+    {
+        switch (e.KeyCode)
+        {
+            case Keys.W:
+                player.MakeMove(Player.Direction.Up);
+                map.Update(player.CurrentCoordinates, g);
+                break;
+            case Keys.A:
+                player.MakeMove(Player.Direction.Left);
+                map.Update(player.CurrentCoordinates, g);
+                break;
+            case Keys.D:
+                player.MakeMove(Player.Direction.Right);
+                map.Update(player.CurrentCoordinates, g);
+                break;
+            case Keys.S:
+                player.MakeMove(Player.Direction.Down);
+                map.Update(player.CurrentCoordinates, g);
+                break;
+            case Keys.Escape:
+                Application.Exit();
+                break;
+        }
+    }
 }
