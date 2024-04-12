@@ -11,6 +11,11 @@ public class Player
     public (int X, int Y) CurrentCoordinates { get; private set; }
 
     /// <summary>
+    /// Player's health.
+    /// </summary>
+    public int Health { get; private set; } = 5;
+
+    /// <summary>
     /// Map where player moves.
     /// </summary>
     private Map map;
@@ -73,6 +78,16 @@ public class Player
         var oldCoordinates = CurrentCoordinates;
         CurrentCoordinates = (newCoordinateByX, newCoordinateByY);
         return oldCoordinates;
+    }
+
+    /// <summary>
+    /// Player loses health after the showdown with mob.
+    /// </summary>
+    /// <returns>true if player still has health points; otherwise false.</returns>
+    public bool LoseHealth(int damageValue)
+    {
+        Health -= damageValue;
+        return Health > 0;
     }
 
     /// <summary>
